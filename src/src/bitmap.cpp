@@ -54,23 +54,28 @@ bool Bitmap::write(string filename) {
     }
 
     return true;
+    
 }
 
 void Bitmap::setPixel(int x, int y, uint8_t red, uint8_t green, uint8_t blue) {
     /* setPixel notes
-
+    
     int x, int y ... used to store cordinates of a pixel
 
     uint8_t red, uint8_t green, uint8_t blue ... 1 byte of information initialized fom red, green, blue of that particular pixel (as specified by x & y)
 
     */
 
-//    uint8_t *pPixel = m_pPixels.get(); 
+   uint8_t *pPixel = m_pPixels.get(); 
    /* pPixel notes... 
 
-   The *pPixel pointer has to use .get() (method of unique ptr) in order to access underlying memeory managed by m_pPixels (declared in Bitmap::bitmap 's methods)
-   We need this because we want to be able to move *pPixel to point to the correct pixel
-   Unique pointers require .get() to access the smart pointer's memmory
+    The *pPixel pointer has to use .get() (method of unique ptr) in order to access underlying memeory managed by m_pPixels (declared in Bitmap::bitmap 's methods)
+        Unique pointers require .get() to access the smart pointer's memmory
+
+    We need this because we want to be able to move *pPixel to point to the correct pixel *using pointer arithmetic...
+        https://www.tutorialspoint.com/cplusplus/cpp_pointer_arithmatic.htm
+   
+    
 
 
    */
