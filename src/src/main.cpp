@@ -13,7 +13,14 @@ int main()
 	int const HEIGHT = 600;	// reason for these two is it saves us from having to re write the value over and over which is bad practice
 	Bitmap bitmap(WIDTH, HEIGHT); 
 
-	bitmap.setPixel(WIDTH/2, HEIGHT/2, 255, 255, 255);	// sets white pixel in the middle of bitmap file (each of the RGB color values range from 0-255 which is what you can fit in an ussigned byte type)
+	// bitmap.setPixel(WIDTH/2, HEIGHT/2, 255, 255, 255);	// sets a white pixel in the middle of screen https://jonasjacek.github.io/colors/
+
+	for (int y=0; y<HEIGHT; y++) {
+		for (int x=0; x<WIDTH; x++) {
+			bitmap.setPixel(x, y, 255, 0, 0);	// (https://jonasjacek.github.io/colors/) (https://en.wikipedia.org/wiki/RGBA_color_model)
+		}
+	}
+
 	bitmap.write("writeBitmapFileTest.bmp"); 
 
 	cout << "finished" << endl;
