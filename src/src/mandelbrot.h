@@ -8,7 +8,7 @@
  the loop going on forever will mean it's unstable (will probably assign another colo
 */
 
-namespace bitmapNS { // will receive a number of iterations of a loop, then use that to figure which color to plot in the pixel
+namespace bitmapNS { 
 
 class Mandelbrot { 
 
