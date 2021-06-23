@@ -13,7 +13,8 @@ namespace bitmapNS {
 class Mandelbrot { 
 
 public:
-    static const int MAX_ITERATIONS = 1000; // The higher the maximal number of iterations, the more detail and subtlety emerge in the final image, but the longer time it will take to calculate the fractal image. 
+    static const int MAX_ITERATIONS = 1000; 
+        // The higher the maximal number of iterations, the more detail and subtlety emerge in the final image, but the longer time it will take to calculate the fractal image. 
 
 public:
     Mandelbrot();           // constructor 
