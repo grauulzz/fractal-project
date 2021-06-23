@@ -38,15 +38,29 @@ int main()
 		}
 	}	// [nested loop1]; (1) scaleing x and y cooridnates... (2) storing number of iterations per pixal... (3) bulding the histogram
 
+	int total = 0;
 	
+	for (int i = 0; i < Mandelbrot::MAX_ITERATIONS; i++) {
+		total += histogram[i];
+	}
+
 	for (int y=0; y<HEIGHT; y++) {
 		for (int x=0; x<WIDTH; x++) {
-			int iterations = fractal[y*WIDTH+x];
-			uint8_t color = (uint8_t)(256 * (double)iterations/Mandelbrot::MAX_ITERATIONS);	
-			color = color*color*color;	// increases density of color 	
-			bitmap.setPixel(x, y, 0, color, 0);		
-			if(color < min) min = color;			
-			if(color > max) max = color; 
+
+			int iterations = fractal[y*WIDTH+x];	
+
+			double hue = 0.0;
+
+			for (int i=0; i <= iterations; i++) {
+				hue += ((double) histogram[i]) / total;
+			}	// colors the historgram
+
+			uint8_t red=0;
+			uint8_t green=hue*255;
+			uint8_t blue=0;
+
+			bitmap.setPixel(x, y, red, green, blue);		
+
 		}
 	}	// [nested loop2]; calculates color over the given number of iterations 
 
