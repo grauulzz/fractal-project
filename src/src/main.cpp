@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdint>
+#include <memory>
 #include "bitmap.h"
 #include "mandelbrot.h"
 
@@ -20,14 +21,19 @@ int main()
 	double min = 999999;	
 	double max = -999999;
 
-	// this is the part which basically converts the x and y cooridnates to a range of -1 and 1 respectivly while still preserving the pixels location. (give each pixel a range from -1 to 1) 
+	unique_ptr<int[]> histogram(new int[Mandelbrot::MAX_ITERATIONS]{0});	// histogram array   
+
 	for (int y=0; y<HEIGHT; y++) {	
 		for (int x=0; x<WIDTH; x++) {
 
-			double xFractal = (x - WIDTH/2 - 200) * 2.0/HEIGHT;
+			double xFractal = (x - WIDTH/2 - 200) * 2.0/HEIGHT;	// this is the part which basically converts the x and y cooridnates to a range of -1 and 1 respectivly while still preserving the pixels location. (give each pixel a range from -1 to 1) 
 			double yFractal = (y - HEIGHT/2) * 2.0/HEIGHT;	
 
-			int iterations = Mandelbrot::getIterations(xFractal, yFractal);	// pass in getIterations for whatever cooridnate we are currently on in nested loop
+			int iterations = Mandelbrot::getIterations(xFractal, yFractal);	// passes in getIterations for whatever cooridnate we are currently on in nested loop
+
+			if (iterations != Mandelbrot::MAX_ITERATIONS) {
+				histogram[iterations]++;
+			}	// saves us from writting into memory that is unallocated
 
 			uint8_t color = (uint8_t)(256 * (double)iterations/Mandelbrot::MAX_ITERATIONS);	// bunch of type "casting" stuff I don't understand
 
@@ -41,8 +47,17 @@ int main()
 		}
 	}
 
-	cout << "min: " << min << "... max: " << max << endl;
+	int count;
+	for (int i=0; i < Mandelbrot::MAX_ITERATIONS; i++) {
+		cout << histogram[i] << " " << flush;
+		count += histogram[i];
+	}
 
+	cout << endl;
+
+	cout << count << "; " << WIDTH*HEIGHT << endl;	// checks to see if histogram equals the same as total pixels (also shows each array value when iterating through histogram)
+
+	cout << "min: " << min << "... max: " << max << endl;
 
 	bitmap.write("writeBitmapFileTest.bmp"); 
 
