@@ -38,8 +38,8 @@ int main()
 		}
 	}	// [nested loop1]; (1) scaleing x and y cooridnates... (2) storing number of iterations per pixal... (3) bulding the histogram
 
+
 	int total = 0;
-	
 	for (int i = 0; i < Mandelbrot::MAX_ITERATIONS; i++) {
 		total += histogram[i];
 	}
