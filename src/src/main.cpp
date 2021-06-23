@@ -24,17 +24,19 @@ int main()
 	for (int y=0; y<HEIGHT; y++) {	
 		for (int x=0; x<WIDTH; x++) {
 
-			double xFractal = (x - WIDTH/2) * 2.0/WIDTH;
+			double xFractal = (x - WIDTH/2 - 200) * 2.0/HEIGHT;
 			double yFractal = (y - HEIGHT/2) * 2.0/HEIGHT;	
 
 			int iterations = Mandelbrot::getIterations(xFractal, yFractal);	// pass in getIterations for whatever cooridnate we are currently on in nested loop
 
-			uint8_t red = (uint8_t)(256 *(double)iterations/Mandelbrot::MAX_ITERATIONS);	// bunch of type "casting" stuff I don't understand
+			uint8_t color = (uint8_t)(256 * (double)iterations/Mandelbrot::MAX_ITERATIONS);	// bunch of type "casting" stuff I don't understand
 
-			bitmap.setPixel(x, y, red, red, 0);
+			color = color*color*color;				// increases density of green 	
+			bitmap.setPixel(x, y, 0, color, 0);		// green
 
-			if(yFractal < min) min = yFractal;			
-			if(yFractal > max) max = yFractal; 
+
+			if(color < min) min = color;			
+			if(color > max) max = color; 
 				
 		}
 	}
