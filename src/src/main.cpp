@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdint>
 #include <memory>
+#include <math.h>
 #include "bitmap.h"
 #include "mandelbrot.h"
 
@@ -16,8 +17,8 @@ int main()
 
 	Bitmap bitmap(WIDTH, HEIGHT); 
 
-	double min = 999999;	// declartion of min and max left in, but not currently being called in anyway at the moment
-	double max = -999999;
+	// double min = 999999;	// declartion of min and max left in, but not currently being called in anyway at the moment
+	// double max = -999999;
 
 	unique_ptr<int[]> histogram(new int[Mandelbrot::MAX_ITERATIONS]{ 0 });	
 		// creating histogram  (keeps track of each pixels amount of iterations) https://en.wikipedia.org/wiki/Histogram
@@ -47,19 +48,25 @@ int main()
 	for (int y=0; y<HEIGHT; y++) {
 		for (int x=0; x<WIDTH; x++) {
 
-			int iterations = fractal[y*WIDTH+x];	
-
-			double hue = 0.0;
-
-			for (int i=0; i <= iterations; i++) {
-				hue += ((double) histogram[i]) / total;
-			}	// colors the historgram
-
 			uint8_t red=0;
-			uint8_t green=hue*255;
+			uint8_t green=0;
 			uint8_t blue=0;
 
-			bitmap.setPixel(x, y, red, green, blue);		
+			int iterations = fractal[y*WIDTH+x];	
+
+
+			if (iterations != Mandelbrot::MAX_ITERATIONS) {
+
+				double hue = 0.0;
+
+				for (int i=0; i <= iterations; i++) {
+					hue += ((double) histogram[i]) / total;
+				}	// colors the historgram
+
+				green=pow(255, hue);		
+			}
+
+			bitmap.setPixel(x, y, red, green, blue);
 
 		}
 	}	// [nested loop2]; calculates color over the given number of iterations 
