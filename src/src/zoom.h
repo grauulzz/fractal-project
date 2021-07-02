@@ -1,7 +1,7 @@
 #ifndef ZOOM_H_
 #define ZOOM_H_
 
-namespace bitmspNS {
+namespace bitmapNS {
 
 struct Zoom {
 

@@ -1,7 +1,7 @@
 #ifndef ZOOMLIST_H_
 #define ZOOMLIST_H_
 
-namespace bitmspNS {
+namespace bitmapNS {
 
 class ZoomList {
 
