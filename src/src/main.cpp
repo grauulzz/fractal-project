@@ -4,6 +4,7 @@
 #include <math.h>
 #include "bitmap.h"
 #include "mandelbrot.h"
+#include "zoom.h"
 
 // program should write a fractal image to a bitmap file
 
@@ -63,7 +64,7 @@ int main()
 					hue += ((double) histogram[i]) / total;
 				}	// colors the historgram
 
-				green=pow(255, hue);		
+				green=pow(255, hue);	// pixels that have more iterations have brighter colors	
 			}
 
 			bitmap.setPixel(x, y, red, green, blue);

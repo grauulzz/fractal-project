@@ -30,7 +30,7 @@ int Mandelbrot::getIterations(double x, double y) {
 
         iterations++;
     }
-    return iterations;  // returns the number of iterations to either hit MAX_ITERATIONS or exceed 2
+    return iterations;  // returns the number of iterations it takes to either hit MAX_ITERATIONS or exceed 2
 }
 
 
