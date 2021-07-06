@@ -23,7 +23,11 @@ int main()
 
 	ZoomList zoomList(WIDTH, HEIGHT);
 
-	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 4.0/WIDTH));	// adds a zoom to Zoomlist class
+	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 4.0/WIDTH));	// initialized scaling with this first zoom
+	zoomList.add(Zoom(364, HEIGHT - 167, 0.1));			// using gimp image editer to find mouse coords of point of interest to apply SECOND zoom with a scale factor of .01
+	zoomList.add(Zoom(257, HEIGHT - 95, 0.1));			// third zoom
+	zoomList.add(Zoom(494, HEIGHT - 517, 0.1));			// ...
+	zoomList.add(Zoom(387, HEIGHT - 307, 0.1));			
 
 	unique_ptr<int[]> histogram(new int[Mandelbrot::MAX_ITERATIONS]{ 0 });	
 		// creating histogram  (keeps track of each pixels amount of iterations) https://en.wikipedia.org/wiki/Histogram
