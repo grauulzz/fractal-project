@@ -11,7 +11,7 @@ int main()
 	int height = 600;
 	FractalCreator fractalCreator(800,600); 
 
-	
+	// methods below must be called in this order
 	fractalCreator.addZoom(Zoom(364, height - 167, 0.1));
 	fractalCreator.addZoom(Zoom(257, height - 95, 0.1));
 	fractalCreator.addZoom(Zoom(494, height - 517, 0.1));
