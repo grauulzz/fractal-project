@@ -3,7 +3,6 @@
 #include <iostream>
 
 using namespace std;
-
 namespace bitmapNS {
 
 ZoomList::ZoomList(int width, int height): m_width(width), m_height(height) {}
@@ -21,7 +20,10 @@ void ZoomList::add(const Zoom& zoom) {
 }
 
 pair<double, double> ZoomList::doZoom(int x, int y) {
-    return pair<double, double>(0,0);   // uses the constructor to default values to (0,0)
+
+    double xFractal = (x - m_width/2)*m_scale + m_xCenter;  // finally able to replace hacky bit 
+    double yFractal = (y - m_height/2)*m_scale + m_yCenter;
+    return pair<double, double>(xFractal, yFractal);   // uses the constructor to default values to (0,0)
 }
 
 }   /* namespace bitmapNS */

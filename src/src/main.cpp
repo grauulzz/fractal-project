@@ -31,12 +31,16 @@ int main()
 	unique_ptr<int[]> fractal(new int[WIDTH*HEIGHT]{ 0 });
 		// storing histogram (creates a database of iterations per pixals so we can access them later)
 
+
 	for (int y=0; y<HEIGHT; y++) {	// need to replace this temporary hack for scaling with the new doZoom function
 		for (int x=0; x<WIDTH; x++) {
-			double xFractal = (x - WIDTH/2 - 200) * 2.0/HEIGHT;	// scaling part which basically converts the x and y cooridnates to a range of -1 and 1 respectivly while still preserving the pixels location. (give each pixel a range from -1 to 1) 
-			double yFractal = (y - HEIGHT/2) * 2.0/HEIGHT;	
-			int iterations = Mandelbrot::getIterations(xFractal, yFractal);	// passes in getIterations for whatever cooridnate we are currently on in nested loop
+
+			pair<double, double> coords = zoomList.doZoom(x, y);
+
+			int iterations = Mandelbrot::getIterations(coords.first, coords.second);	// passes in getIterations for whatever cooridnate we are currently on in nested loop (coords.fist, coords.second) is how you access the fist and second values present in pair
+
 			fractal[y*WIDTH+x] = iterations;	// this is a calculation of how fractal will parse through the iterations stored in the histogram. reads values starting bottom left working it's way up by 1 column with each completed row
+
 			if (iterations != Mandelbrot::MAX_ITERATIONS) {
 				histogram[iterations]++;
 				// if statement above saves us from writting into memory that is unallocated
