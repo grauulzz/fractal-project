@@ -23,7 +23,7 @@ int main()
 
 	ZoomList zoomList(WIDTH, HEIGHT);
 
-	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 1));	// add a zoom to Zoomlist class
+	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 4.0/WIDTH));	// adds a zoom to Zoomlist class
 
 	unique_ptr<int[]> histogram(new int[Mandelbrot::MAX_ITERATIONS]{ 0 });	
 		// creating histogram  (keeps track of each pixels amount of iterations) https://en.wikipedia.org/wiki/Histogram
@@ -31,7 +31,7 @@ int main()
 	unique_ptr<int[]> fractal(new int[WIDTH*HEIGHT]{ 0 });
 		// storing histogram (creates a database of iterations per pixals so we can access them later)
 
-	for (int y=0; y<HEIGHT; y++) {	
+	for (int y=0; y<HEIGHT; y++) {	// need to replace this temporary hack for scaling with the new doZoom function
 		for (int x=0; x<WIDTH; x++) {
 			double xFractal = (x - WIDTH/2 - 200) * 2.0/HEIGHT;	// scaling part which basically converts the x and y cooridnates to a range of -1 and 1 respectivly while still preserving the pixels location. (give each pixel a range from -1 to 1) 
 			double yFractal = (y - HEIGHT/2) * 2.0/HEIGHT;	
