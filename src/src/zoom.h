@@ -1,8 +1,6 @@
 #ifndef ZOOM_H_
 #define ZOOM_H_
-
 namespace bitmapNS {
-
 struct Zoom {
 
     int x{0};  // cooridinates to zoom too in the bitmap cooridinates system 
@@ -13,6 +11,5 @@ struct Zoom {
 };  // using struct instead of class here because structs have all members public by default (apart from that, structs and classes are exactly the same)
 
 }   /* bitmapNS */
-
 
 #endif /* ZOOM_H_ */

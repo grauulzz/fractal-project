@@ -4,7 +4,7 @@
 #include <math.h>
 #include "bitmap.h"
 #include "mandelbrot.h"
-#include "zoom.h"
+#include "ZoomList.h"
 
 // program should write a fractal image to a bitmap file
 
@@ -20,6 +20,10 @@ int main()
 
 	// double min = 999999;	// declartion of min and max left in, but not currently being called in anyway at the moment
 	// double max = -999999;
+
+	ZoomList zoomList(WIDTH, HEIGHT);
+
+	zoomList.add(Zoom(WIDTH/2, HEIGHT/2, 1));	// add a zoom to Zoomlist class
 
 	unique_ptr<int[]> histogram(new int[Mandelbrot::MAX_ITERATIONS]{ 0 });	
 		// creating histogram  (keeps track of each pixels amount of iterations) https://en.wikipedia.org/wiki/Histogram
@@ -73,7 +77,7 @@ int main()
 	}	// [nested loop2]; calculates color over the given number of iterations 
 
 
-	/* code listed below displays an output to get a visual feel for what the histogram is actually doing (uncomment)
+	/* code listed below displays an output to get a visual feel for what the histogram is actually doing (should work as is if uncommented)
 	int count;
 	for (int i=0; i < Mandelbrot::MAX_ITERATIONS; i++) {
 		cout << histogram[i] << " " << flush;
