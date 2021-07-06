@@ -5,6 +5,7 @@
 #include "bitmap.h"
 #include "mandelbrot.h"
 #include "ZoomList.h"
+#include "FractalCreator.h"
 
 // program should write a fractal image to a bitmap file
 

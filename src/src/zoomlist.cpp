@@ -1,6 +1,5 @@
 
 #include "ZoomList.h"
-#include <iostream>
 
 using namespace std;
 namespace bitmapNS {
@@ -16,7 +15,7 @@ void ZoomList::add(const Zoom& zoom) {
 
     m_scale *= zoom.scale;
 
-    cout << m_xCenter << ", " << m_yCenter << ", " << m_scale << endl;  // test if center calc is working
+    // cout << m_xCenter << ", " << m_yCenter << ", " << m_scale << endl;  // debug output 
 }
 
 pair<double, double> ZoomList::doZoom(int x, int y) {
