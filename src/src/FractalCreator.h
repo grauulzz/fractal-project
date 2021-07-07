@@ -10,6 +10,7 @@
 #include "mandelbrot.h"
 #include "bitmap.h"
 #include "ZoomList.h"
+#include "RGB.h"
 
 using namespace std;
 namespace bitmapNS {
@@ -29,11 +30,11 @@ private:
     void calculateIteration(); 
     void calculateTotalIterations();
     void drawFractal();
-    void addZoom(const Zoom& zoom);
     void writeBitmap(string name); 
 
 public:
     FractalCreator(int width, int height);
+    void addZoom(const Zoom& zoom);
     virtual ~FractalCreator();
     void run(string name); 
 

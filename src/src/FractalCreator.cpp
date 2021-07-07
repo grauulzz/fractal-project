@@ -7,14 +7,10 @@ namespace bitmapNS {
 void FractalCreator::run(string name) {
 
 	// methods below must be called in this order
-	addZoom(Zoom(364, m_height - 167, 0.1));
-	addZoom(Zoom(257, m_height - 95, 0.1));
-	addZoom(Zoom(494, m_height - 517, 0.1));
-	addZoom(Zoom(387, m_height - 307, 0.1));
 	calculateIteration();
 	calculateTotalIterations();
 	drawFractal();
-	writeBitmap("writeBitmapFileTest1.bmp"); 
+	writeBitmap("test.bmp"); 
 
 }
 
@@ -49,6 +45,9 @@ void FractalCreator::calculateTotalIterations() {
 }
 
 void FractalCreator::drawFractal() {
+	RGB startColor(0, 0, 128);	
+	RGB endColor(255, 128, 255);	
+	RGB colorDiff = endColor - startColor; 
 
     for (int y=0; y<m_height; y++) {
 		for (int x=0; x<m_width; x++) {
@@ -67,8 +66,17 @@ void FractalCreator::drawFractal() {
 				for (int i=0; i <= iterations; i++) {
 					hue += ((double) m_histogram[i]) / m_total;
 				}   // colors the historgram
+
+				red = pow(startColor.r + colorDiff.r, hue);
+				green = pow(startColor.g + colorDiff.g, hue);
+				blue = pow(startColor.b + colorDiff.b, hue);
+
+				// red = startColor.r + colorDiff.r*hue;
+				// green = startColor.g + colorDiff.g*hue;
+				// blue = startColor.b + colorDiff.b*hue;
                 
-				green=pow(255, hue);	// pixels that have more iterations have brighter colors	
+				// green=pow(255, hue);	// pixels that have more iterations have brighter colors	
+				// green = hue * 255;
 			}
 			m_bitmap.setPixel(x, y, red, green, blue);
 		}

@@ -21,7 +21,7 @@ void ZoomList::add(const Zoom& zoom) {
 pair<double, double> ZoomList::doZoom(int x, int y) {
 
     double xFractal = (x - m_width/2)*m_scale + m_xCenter;  // finally able to replace hacky bit 
-    double yFractal = (y - m_height/2)*m_scale + m_yCenter;
+    double yFractal = -(y - m_height/2)*m_scale + m_yCenter;
     return pair<double, double>(xFractal, yFractal);   // uses the constructor to default values to (0,0)
 }
 
