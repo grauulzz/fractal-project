@@ -18,19 +18,19 @@ namespace bitmapNS {
 
 class FractalCreator {
 private:
-
     int m_width;
     int m_height;
     unique_ptr<int[]> m_histogram;	// creating m_histogram  (keeps track of each pixels amount of iterations)
 	unique_ptr<int[]> m_fractal;    // storing m_histogram (creates a database of iterations per pixals so we can access them later)
     Bitmap m_bitmap;
     ZoomList m_zoomList;
-    int m_total{0};
+    int m_total{ 0 };
+    
     vector<int> m_ranges;
 	vector<RGB> m_colors;
     vector<int> m_rangeTotals;
-    bool m_bGotFirstRange{false};
 	
+    bool m_bGotFirstRange{false};
 
 private:
     // these methods are private because they are only called in run()
@@ -39,6 +39,7 @@ private:
     void calculateRangeTotals();
     void drawFractal();
     void writeBitmap(string name); 
+    int getRange(int iterations) const;
     
 
 
@@ -46,7 +47,6 @@ public:
     // these methods are public becuase they are called from main ... (run() is the beefy method which is used to declutter main as well as run all methods of fractal generation in the correct order)
     FractalCreator(int width, int height);
     void addRange(double rangeEnd, const RGB& rgb); 
-    int getRange(int iterations) const;
     void addZoom(const Zoom& zoom);
     virtual ~FractalCreator();
     void run(string name); 
