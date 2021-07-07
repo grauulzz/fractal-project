@@ -28,18 +28,25 @@ private:
     int m_total{0};
     vector<int> m_ranges;
 	vector<RGB> m_colors;
-		
+    vector<int> m_rangeTotals;
+    bool m_bGotFirstRange{false};
+	
+
 private:
     // these methods are private because they are only called in run()
     void calculateIteration(); 
     void calculateTotalIterations();
+    void calculateRangeTotals();
     void drawFractal();
     void writeBitmap(string name); 
+    
+
 
 public:
     // these methods are public becuase they are called from main ... (run() is the beefy method which is used to declutter main as well as run all methods of fractal generation in the correct order)
     FractalCreator(int width, int height);
     void addRange(double rangeEnd, const RGB& rgb); 
+    int getRange(int iterations) const;
     void addZoom(const Zoom& zoom);
     virtual ~FractalCreator();
     void run(string name); 

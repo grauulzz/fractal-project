@@ -1,4 +1,5 @@
 #include "FractalCreator.h"
+#include <assert.h>
 
 using namespace std;
 
@@ -9,7 +10,33 @@ void FractalCreator::addRange(double rangeEnd, const RGB& rgb) {
 	m_ranges.push_back(rangeEnd*Mandelbrot::MAX_ITERATIONS);
 	m_colors.push_back(rgb);
 
+	if (m_bGotFirstRange) {
+		m_rangeTotals.push_back(0);
+	}
+
+	m_bGotFirstRange = true; 
+
 }	// should add color based off number of iterations within a given range (called from main) both rangeEnd and rgb should be stored in vectors
+
+int FractalCreator::getRange(int iterations) const {
+	int range = 0;
+
+	for (int i=1; i < m_ranges.size(); i++) {
+
+		range = i; 
+
+		if (m_ranges[i] > iterations) {
+			break;
+		}
+	}
+
+	range--;
+
+	assert(range > -1); // assert is for running in debug mode in this case, it'll crash if we try and index outside of vector
+	assert(range < m_ranges.size());
+
+	return range;
+}
 
 void FractalCreator::addZoom(const Zoom& zoom) { 
     m_zoomList.add(zoom);
