@@ -3,15 +3,14 @@
 
 namespace bitmapNS {
 struct RGB {
-private:
+
     double r;
     double g;
     double b;
-
-public:
-    RGB();
-    virtual ~RGB();
+    RGB(double r, double g, double b);
 };
+
+RGB operator-(const RGB& first, const RGB& second);
 
 }   /* bitmapNS */   
 

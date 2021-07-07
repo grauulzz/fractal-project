@@ -4,6 +4,20 @@ using namespace std;
 
 namespace bitmapNS {
 
+void FractalCreator::run(string name) {
+
+	// methods below must be called in this order
+	addZoom(Zoom(364, m_height - 167, 0.1));
+	addZoom(Zoom(257, m_height - 95, 0.1));
+	addZoom(Zoom(494, m_height - 517, 0.1));
+	addZoom(Zoom(387, m_height - 307, 0.1));
+	calculateIteration();
+	calculateTotalIterations();
+	drawFractal();
+	writeBitmap("writeBitmapFileTest1.bmp"); 
+
+}
+
 FractalCreator::FractalCreator(int width, int height): m_width(width), m_height(height), m_histogram(new int[Mandelbrot::MAX_ITERATIONS] { 0 }), m_fractal(new int[m_width*m_height]{ 0 }), m_bitmap(m_width, m_height), m_zoomList(m_width, m_height) {
     m_zoomList.add(Zoom(m_width/2, m_height/2, 4.0/m_width));
 }
