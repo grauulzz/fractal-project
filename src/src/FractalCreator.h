@@ -5,6 +5,7 @@
 #include <cstdint>
 #include <memory>
 #include <math.h>
+#include <vector>
 #include "FractalCreator.h"
 #include "Zoom.h"
 #include "mandelbrot.h"
@@ -25,15 +26,20 @@ private:
     Bitmap m_bitmap;
     ZoomList m_zoomList;
     int m_total{0};
+    vector<int> m_ranges;
+	vector<RGB> m_colors;
 		
 private:
+    // these methods are private because they are only called in run()
     void calculateIteration(); 
     void calculateTotalIterations();
     void drawFractal();
     void writeBitmap(string name); 
 
 public:
+    // these methods are public becuase they are called from main ... (run() is the beefy method which is used to declutter main as well as run all methods of fractal generation in the correct order)
     FractalCreator(int width, int height);
+    void addRange(double rangeEnd, const RGB& rgb); 
     void addZoom(const Zoom& zoom);
     virtual ~FractalCreator();
     void run(string name); 

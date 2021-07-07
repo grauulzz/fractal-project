@@ -4,6 +4,17 @@ using namespace std;
 
 namespace bitmapNS {
 
+void FractalCreator::addRange(double rangeEnd, const RGB& rgb) {	
+
+	m_ranges.push_back(rangeEnd*Mandelbrot::MAX_ITERATIONS);
+	m_colors.push_back(rgb);
+
+}	// should add color based off number of iterations within a given range (called from main) both rangeEnd and rgb should be stored in vectors
+
+void FractalCreator::addZoom(const Zoom& zoom) { 
+    m_zoomList.add(zoom);
+}
+
 void FractalCreator::run(string name) {
 
 	// methods below must be called in this order
@@ -81,10 +92,6 @@ void FractalCreator::drawFractal() {
 			m_bitmap.setPixel(x, y, red, green, blue);
 		}
 	}	// [nested loop2]; calculates color over the given number of iterations
-}
-
-void FractalCreator::addZoom(const Zoom& zoom) { 
-    m_zoomList.add(zoom);
 }
 
 void FractalCreator::writeBitmap(string name) {

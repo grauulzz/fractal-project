@@ -66,7 +66,7 @@ bool Bitmap::write(string filename) {
     
 int x, int y ... used to store cordinates of a pixel
 
-uint8_t red, uint8_t green, uint8_t blue ... 1 byte of information initialized fom red, green, blue of that particular pixel (as specified by x & y)
+uint8_t red, uint8_t green, uint8_t blue ... 1 byte of information initialized for red, green, blue of that particular pixel (as specified by x & y)
 
 */
 
