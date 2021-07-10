@@ -126,14 +126,6 @@ void FractalCreator::drawFractal() {
 				green = startColor.g + colorDiff.g * (double) totalPixels / rangeTotal;
 				blue = startColor.b + colorDiff.b * (double) totalPixels / rangeTotal;
 
-
-				// red = startColor.r + colorDiff.r*hue;
-				// green = startColor.g + colorDiff.g*hue;
-				// blue = startColor.b + colorDiff.b*hue;
-
-				// red = pow(startColor.r + colorDiff.r, hue);
-				// green = pow(startColor.g + colorDiff.g, hue);
-				// blue = pow(startColor.b + colorDiff.b, hue);
                 
 			}
 			m_bitmap.setPixel(x, y, red, green, blue);
