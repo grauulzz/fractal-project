@@ -2,9 +2,9 @@
 
 This program writes a fractal image to a bitmap file in c++ using the Mandlebrot set to plot it's cooridinates (https://en.wikipedia.org/wiki/Mandelbrot_set) 
 
-After Mandelbrot's alg is applied to the cooridinates system of the fractal image, 
-points of a given pixel's stability/instability are added to a histogram 
-We create a database of the histogram's values to use them for coloring and zooming in on the fractal image
+Points of a given pixel's stability/instability are added to a histogram of cooridinate values (database)
+We use these cooridinates/database to color and zoom in on the fractal image based of which pixel's total amount of iterations are stable or unstable as the mandelbrots set is appiled to each cooridinate value (complex numbers are used to represent coordinate values of histogram)
+(this is an extremely brief description)
 
 I am no expert in the mandlebrot set, and there is still much I'd like to do / learn in regards to this project!
 I'd like to give credit to caveofprogramming's advanced c++ course. Helped me out a lot along the way!
