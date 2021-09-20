@@ -8,7 +8,7 @@ Points of a given pixel's stability/instability are added to a histogram of coor
 
 We use this database to color and zoom in on the fractal image based of which pixel's total amount of iterations are stable or unstable as the mandelbrot set equations is appiled to each cooridinate value (complex numbers are used to represent coordinate values of histogram)
 
-
+[![fractal example]()](https://imgur.com/a/YYB5Chv)
 
 
 
