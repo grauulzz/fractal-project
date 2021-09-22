@@ -1,6 +1,6 @@
 # fractal-project
 
-This program writes a fractal image to a bitmap file using c++ using the Mandlebrot set to plot it's cooridinates (https://en.wikipedia.org/wiki/Mandelbrot_set) 
+This program writes a fractal image to a bitmap file in c++ using the Mandlebrot set to plot it's cooridinates (https://en.wikipedia.org/wiki/Mandelbrot_set) 
 
 (extremely brief description)
 
